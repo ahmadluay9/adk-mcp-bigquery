@@ -1,7 +1,10 @@
 from google.adk.agents import Agent
 from toolbox_core import ToolboxSyncClient
+import os
+from dotenv import load_dotenv
 
-toolbox = ToolboxSyncClient("http://127.0.0.1:5000")
+load_dotenv()
+toolbox = ToolboxSyncClient(os.getenv("CLOUD_RUN_SERVICE_URL"))
 
 # Load all the tools
 tools = toolbox.load_toolset('my_bq_toolset')
